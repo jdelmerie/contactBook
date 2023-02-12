@@ -1,0 +1,35 @@
+<div class="container list">
+    <div class="row">
+        <div *ngFor="let contact of contacts | async" class="col m4 s6">
+            <div class="card horizontal" (click)="goToDetails(contact.id)" appBorderCard>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p class="card-title">{{contact.firstname}} {{contact.lastname}}</p>
+                        <p *ngIf="( contact.note).length > 0 else flemme">
+                            {{ contact.note}}
+                        </p>
+                        <!-- <ul>
+                            <li class="collection-item">
+                                <strong>Email : </strong>
+                                {{contact.email}}
+                            </li>
+                            <li class="collection-item">
+                                <strong>Phone : </strong>
+                                {{contact.phone}}
+                            </li>
+                            <li class="collection-item">
+                                <strong>Address :</strong><br>
+                                {{contact.address.street}}<br>
+                                {{contact.address.zipcode}}
+                                {{contact.address.city}}
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #flemme>
+    Aucune note....
+</ng-template>

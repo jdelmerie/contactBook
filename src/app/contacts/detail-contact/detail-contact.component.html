@@ -1,0 +1,50 @@
+<ng-container *ngIf="contact && !load">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <h2 class="header center">{{contact.firstname}} {{contact.lastname}}</h2>
+            <div class="card horizontal hoverable">
+                <div class="card-image">
+                    <img [src]="contact.avatar">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <table class="bordered striped">
+                            <tbody>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><strong>{{ contact.email }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td><strong>{{ contact.phone }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>
+                                        <strong>
+                                        {{ contact.address.street }}<br>
+                                        {{ contact.address.zipcode }} {{ contact.address.city }}
+                                    </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Notes</td>
+                                    <td><strong>{{ contact.note }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-action">
+                        <a (click)="goToList()">Retour</a>
+                        <!-- <a (click)="goToEditPokemon(pokemon)">Éditer</a>
+                            <a (click)="deletePokemon(pokemon)">Supprimer</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<h4 *ngIf='load' class="center">
+    <app-loader></app-loader>
+</h4>
