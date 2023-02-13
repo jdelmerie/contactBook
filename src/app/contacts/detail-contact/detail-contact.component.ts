@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { GetContactByID } from 'src/app/ngrx/app.actions';
-import { getContact, getSnipper } from 'src/app/ngrx/app.selectors';
+import { getContact, getSpinner } from 'src/app/ngrx/app.selectors';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -30,12 +29,16 @@ export class DetailContactComponent implements OnInit {
     }
     this.store.select(getContact).subscribe(contact => {
       this.contact = contact;
-      this.store.select(getSnipper).subscribe(snipper => this.load = snipper)
+      this.store.select(getSpinner).subscribe(snipper => this.load = snipper)
     })
   }
 
   goToList() {
     this.router.navigateByUrl("/liste")
+  }
+
+  goToEdit(id: number) {
+    this.router.navigateByUrl("/edit/" + id)
   }
 
 }

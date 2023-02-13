@@ -22,9 +22,9 @@
                                     <td>Address</td>
                                     <td>
                                         <strong>
-                                        {{ contact.address.street }}<br>
-                                        {{ contact.address.zipcode }} {{ contact.address.city }}
-                                    </strong>
+                                            {{ contact.address.street }}<br>
+                                            {{ contact.address.zipcode }} {{ contact.address.city }}
+                                        </strong>
                                     </td>
                                 </tr>
                                 <tr>
@@ -36,8 +36,8 @@
                     </div>
                     <div class="card-action">
                         <a (click)="goToList()">Retour</a>
-                        <!-- <a (click)="goToEditPokemon(pokemon)">Éditer</a>
-                            <a (click)="deletePokemon(pokemon)">Supprimer</a> -->
+                        <a (click)="goToEdit(contact.id)">Éditer</a>
+                        <!--   <a (click)="deletePokemon(pokemon)">Supprimer</a> -->
                     </div>
                 </div>
             </div>

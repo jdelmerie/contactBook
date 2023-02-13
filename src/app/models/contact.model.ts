@@ -1,6 +1,5 @@
 import { Address } from "./address.model";
 
-
 export interface Contact {
     id: number;
     firstname: string;

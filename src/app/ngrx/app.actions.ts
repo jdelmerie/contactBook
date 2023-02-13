@@ -17,3 +17,19 @@ export const GetContactByID = createActionGroup({
         'FAIL': props<{ error: string }>()
     }
 })
+export const AddContact = createActionGroup({
+    source: 'CONTACTS | ADD CONTACT',
+    events: {
+        'DO': props<{ contact: Contact }>(),
+        'SUCCESS': props<{ contact: Contact }>(),
+        'FAIL': props<{ error: string }>()
+    }
+})
+export const UpdateContact = createActionGroup({
+    source: 'CONTACTS | UPDATE CONTACT',
+    events: {
+        'DO': props<{ contact: Contact }>(),
+        'SUCCESS': props<{ contact: Contact }>(),
+        'FAIL': props<{ error: string }>()
+    }
+})

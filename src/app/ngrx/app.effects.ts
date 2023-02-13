@@ -32,5 +32,25 @@ export class AppEffects {
                 )
         })
     ))
+    addContact$ = createEffect(() => this.actions$.pipe(
+        ofType(AppActions.AddContact.do),
+        switchMap((action) => {
+            return this.service.addContact(action.contact)
+                .pipe(
+                    map((contact) => AppActions.AddContact.success({ contact })),
+                    catchError((err) => of(AppActions.AddContact.fail({ error: err })))
+                )
+        })
+    ))
+    updateContact$ = createEffect(() => this.actions$.pipe(
+        ofType(AppActions.UpdateContact.do),
+        switchMap((action) => {
+            return this.service.updateContact(action.contact)
+                .pipe(
+                    map((contact) => AppActions.UpdateContact.success({ contact })),
+                    catchError((err) => of(AppActions.UpdateContact.fail({ error: err })))
+                )
+        })
+    ))
 }
 

@@ -12,14 +12,14 @@ export interface RootState {
     appName: string;
     contacts: Contact[];
     contact: Contact | any;
-    snipper: boolean;
+    spinner: boolean
 }
 
 const initialState: RootState = {
     appName: 'Contact book',
     contacts: [],
     contact: {},
-    snipper: false
+    spinner: false
 }
 
 function log(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -38,7 +38,43 @@ export const metaReducers: MetaReducer[] = [log];
 
 export const rootReducer = createReducer<RootState, Action>(
     initialState,
-    on(AppActions.GetContacts.success, (state, { contacts }) => ({ ...state, contacts })),
-    on(AppActions.GetContactByID.do, (state) => ({ ...state, contact: initialState.contact, snipper: true })),
-    on(AppActions.GetContactByID.success, (state, { contact }) => ({ ...state, contact, snipper: initialState.snipper }))
+    on(AppActions.GetContacts.do, (state) => ({
+        ...state,
+        spinner: true
+    })),
+    on(AppActions.GetContacts.success, (state, { contacts }) => ({
+        ...state,
+        contacts,
+        spinner: false
+    })),
+    on(AppActions.GetContactByID.do, (state) => ({
+        ...state,
+        contact: initialState.contact,
+        spinner: true
+    })),
+    on(AppActions.GetContactByID.success, (state, { contact }) => ({
+        ...state,
+        contact,
+        spinner: false
+    })),
+    on(AppActions.AddContact.do, (state) => ({
+        ...state,
+        spinner: true
+    })),
+    on(AppActions.AddContact.success, (state, { contact }) => ({
+        ...state,
+        contacts: [...state.contacts, contact],
+        contact: contact,
+        spinner: false
+    })),
+    on(AppActions.UpdateContact.do, (state) => ({
+        ...state,
+        spinner: true
+    })),
+    on(AppActions.UpdateContact.success, (state, { contact }) => ({
+        ...state,
+        contacts: state.contacts.map(c => contact.id === c.id ? contact : c),
+        contact: contact,
+        spinner: false
+    })),
 );

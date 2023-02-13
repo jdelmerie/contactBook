@@ -16,6 +16,8 @@ import { AppEffects } from './ngrx/app.effects';
 import { DetailContactComponent } from './contacts/detail-contact/detail-contact.component';
 import { LoaderComponent } from './loader/loader.component';
 import { BorderCardDirective } from './contacts/border-card.directive';
+import { FormComponent } from './contacts/form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import { BorderCardDirective } from './contacts/border-card.directive';
     ListContactComponent,
     DetailContactComponent,
     LoaderComponent,
-    BorderCardDirective
+    BorderCardDirective,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     StoreModule.forRoot({
       [ROOT_FEATURE_KEY]: rootReducer

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { GetContacts } from 'src/app/ngrx/app.actions';
-import { getContacts } from 'src/app/ngrx/app.selectors';
+import { getContacts, getSpinner } from 'src/app/ngrx/app.selectors';
 
 @Component({
   selector: 'app-list-contact',
@@ -14,6 +14,7 @@ import { getContacts } from 'src/app/ngrx/app.selectors';
 export class ListContactComponent implements OnInit {
 
   contacts: Observable<Contact[]> = this.store.select(getContacts);
+  load!: boolean;
 
   constructor(
     private store: Store,
@@ -21,7 +22,8 @@ export class ListContactComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(GetContacts.do())
+    this.store.dispatch(GetContacts.do());
+    this.store.select(getSpinner).subscribe(snipper => this.load = snipper)
   }
 
   goToDetails(id: number) {
