@@ -5,3 +5,7 @@
 .form {
     padding: 20px;
 }
+
+.btn-form>button {
+    margin: 3px;
+}

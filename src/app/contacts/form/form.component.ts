@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Address } from 'src/app/models/address.model';
 import { Contact } from 'src/app/models/contact.model';
 import { AddContact, GetContactByID, UpdateContact } from 'src/app/ngrx/app.actions';
-import { getContact, getContacts, getSpinner, test } from 'src/app/ngrx/app.selectors';
+import { getContact, getContacts, getSpinner } from 'src/app/ngrx/app.selectors';
 
 @Component({
   selector: 'app-form',
@@ -73,6 +73,11 @@ export class FormComponent implements OnInit {
       else this.store.dispatch(UpdateContact.do({ contact }));
       this.router.navigateByUrl("/contact/" + contact.id);
     }
+  }
+
+  goBack() {
+    if (this.addForm) this.router.navigateByUrl("/liste")
+    else this.router.navigateByUrl("/contact/" + this.contact.id);
   }
 
   private add() {

@@ -10,7 +10,6 @@ export class ContactService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-
     constructor(private http: HttpClient) { }
 
     getContactList(): Observable<Contact[]> {
@@ -27,5 +26,9 @@ export class ContactService {
 
     updateContact(contact: Contact): Observable<Contact> {
         return this.http.put<Contact>('api/contacts', contact, this.httpOptions);
+    }
+
+    deleteContact(contact: Contact): Observable<null> {
+        return this.http.delete<null>('api/contacts/' + contact.id);
     }
 }

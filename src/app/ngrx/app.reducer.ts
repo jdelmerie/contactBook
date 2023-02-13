@@ -77,4 +77,10 @@ export const rootReducer = createReducer<RootState, Action>(
         contact: contact,
         spinner: false
     })),
+    on(AppActions.DeleteContact.do, (state, { contact }) => ({
+        ...state,
+        contacts: state.contacts.filter((c) => c.id !== contact.id),
+        contact: initialState.contact,
+        spinner: false
+    })),
 );

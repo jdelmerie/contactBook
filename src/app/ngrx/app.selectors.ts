@@ -21,8 +21,3 @@ export const getSpinner = createSelector(
     selectRoot,
     (state) => state.spinner
 );
-export const test = createSelector(
-    selectRoot,
-    (state) => state.contacts[state.contacts.length - 1].id
-);
-

@@ -52,5 +52,15 @@ export class AppEffects {
                 )
         })
     ))
+    deleteContact$ = createEffect(() => this.actions$.pipe(
+        ofType(AppActions.DeleteContact.do),
+        switchMap((action) => {
+            return this.service.deleteContact(action.contact)
+                .pipe(
+                    map(() => AppActions.DeleteContact.success()),
+                    catchError((err) => of(AppActions.DeleteContact.fail({ error: err })))
+                )
+        })
+    ))
 }
 

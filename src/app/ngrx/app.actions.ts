@@ -33,3 +33,11 @@ export const UpdateContact = createActionGroup({
         'FAIL': props<{ error: string }>()
     }
 })
+export const DeleteContact = createActionGroup({
+    source: 'CONTACTS | DELETE CONTACT',
+    events: {
+        'DO': props<{ contact: Contact }>(),
+        'SUCCESS': emptyProps(),
+        'FAIL': props<{ error: string }>()
+    }
+})

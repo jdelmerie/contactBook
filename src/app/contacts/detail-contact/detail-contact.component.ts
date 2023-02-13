@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Contact } from 'src/app/models/contact.model';
-import { GetContactByID } from 'src/app/ngrx/app.actions';
+import { DeleteContact, GetContactByID } from 'src/app/ngrx/app.actions';
 import { getContact, getSpinner } from 'src/app/ngrx/app.selectors';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -37,8 +37,14 @@ export class DetailContactComponent implements OnInit {
     this.router.navigateByUrl("/liste")
   }
 
-  goToEdit(id: number) {
-    this.router.navigateByUrl("/edit/" + id)
+  goToEdit(contact: Contact) {
+    this.router.navigateByUrl("/edit/" + contact.id)
   }
 
+  deleteContact(contact: Contact) {
+    if (confirm("Do you really want to delete this contact ?")) {
+      this.store.dispatch(DeleteContact.do({ contact }));
+      this.router.navigateByUrl("/liste")
+    }
+  }
 }
