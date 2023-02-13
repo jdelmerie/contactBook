@@ -19,6 +19,8 @@ import { BorderCardDirective } from './contacts/border-card.directive';
 import { FormComponent } from './contacts/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './contacts/search/search.component';
+import { PageNotFoundComponent } from './contacts/page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SearchComponent } from './contacts/search/search.component';
     LoaderComponent,
     BorderCardDirective,
     FormComponent,
-    SearchComponent
+    SearchComponent,
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
