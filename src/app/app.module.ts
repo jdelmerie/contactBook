@@ -18,6 +18,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { BorderCardDirective } from './contacts/border-card.directive';
 import { FormComponent } from './contacts/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './contacts/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DetailContactComponent,
     LoaderComponent,
     BorderCardDirective,
-    FormComponent
+    FormComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

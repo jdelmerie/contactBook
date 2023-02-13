@@ -1,5 +1,6 @@
 <ng-container *ngIf="!load">
     <div class="container list">
+        <app-search></app-search>
         <div class="row">
             <div *ngFor="let contact of contacts | async" class="col m4 s6">
                 <div class="card horizontal" (click)="goToDetails(contact.id)" appBorderCard>

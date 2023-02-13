@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <div class="card">
+            <div class="card-content">
+                <div class="input-field">
+                    <input #searchBox (keyup)="search(searchBox.value)" placeholder="Search a contact" />
+                    <div class="collection">
+                        <a *ngFor="let contact of contacts$ | async" (click)="goToDetails(contact.id)"
+                            class="collection-item">
+                            {{ contact.firstname }} {{ contact.lastname }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

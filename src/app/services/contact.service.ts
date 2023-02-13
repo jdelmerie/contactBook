@@ -31,4 +31,20 @@ export class ContactService {
     deleteContact(contact: Contact): Observable<null> {
         return this.http.delete<null>('api/contacts/' + contact.id);
     }
+
+    searchContactList(term: string): Observable<Contact[]> {
+        if (term.length <= 1) {
+            return of([]);
+        }
+
+        return this.http.get<Contact[]>(`api/contacts/?firstname=${term}&lastname=&${term}`).pipe(
+            tap((response) => console.log(response)),
+            catchError((error) => this.handleError(error, []))
+        );
+    }
+
+    private handleError(error: Error, errorValue: any) {
+        console.error(error);
+        return of(errorValue);
+    }
 }
